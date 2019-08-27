@@ -1,0 +1,2 @@
+use Maps;
+db.createCollection("heights");
