@@ -5,6 +5,7 @@ import com.heightmap.storages.Storage;
 
 public class Height {
 	public static final int ERROR_VALUE = -1000;
+	public static final double STEP = 0.0005;
 	private static Storage storage;
 	
 	static {
@@ -22,4 +23,6 @@ public class Height {
 		
 		return height;
 	}
+	
+	//int getMaxtrix =
 }
