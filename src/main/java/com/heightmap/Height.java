@@ -24,5 +24,4 @@ public class Height {
 		return height;
 	}
 	
-	//int getMaxtrix =
 }
