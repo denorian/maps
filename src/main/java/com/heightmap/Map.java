@@ -44,8 +44,7 @@ public class Map {
 		}
 		
 		HashMap<String, Coordinate> coordinateMap = height.getMap(latitudeStart, latitudeEnd, longitudeStart, longitudeEnd, precision);
-		System.out.println(coordinateLinkedList.size());
-		System.out.println(coordinateMap.size());
+		
 		Iterator iterator = coordinateLinkedList.iterator();
 		while (iterator.hasNext()) {
 			Coordinate coordinate = (Coordinate) iterator.next();
@@ -59,6 +58,27 @@ public class Map {
 		}
 		
 		return coordinateLinkedList;
+	}
+	
+	public void drawConsoleMatrix(){
+		LinkedList<Coordinate> mapList = this.createMatrix();
+		
+		Iterator iterator = mapList.iterator();
+		double lastLatitude = 0;
+		while (iterator.hasNext()) {
+			Coordinate coordinate = (Coordinate) iterator.next();
+			
+			if(coordinate.getLatitude() != lastLatitude){
+				System.out.println();
+				lastLatitude = coordinate.getLatitude();
+			}
+			
+			if (coordinate.getHeight() > 10) {
+				System.out.print("X ");
+			} else {
+				System.out.print(". ");
+			}
+		}
 	}
 	
 	

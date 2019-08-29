@@ -12,24 +12,7 @@ public class Main {
 		Coordinate coordinateEnd = new Coordinate(44.355355, 38.540778);
 		
 		Map map = new Map(coordinateStart, coordinateEnd, 3);
-		LinkedList<Coordinate> mapList = map.createMatrix();
-		
-		Iterator iterator = mapList.iterator();
-		double lastLatitude = 0;
-		while (iterator.hasNext()) {
-			Coordinate coordinate = (Coordinate) iterator.next();
-			
-			if(coordinate.getLatitude() != lastLatitude){
-				System.out.println();
-				lastLatitude = coordinate.getLatitude();
-			}
-			
-			if (coordinate.getHeight() > 10) {
-				System.out.print("X ");
-			} else {
-				System.out.print(". ");
-			}
-		}
+		map.drawConsoleMatrix();
 		
 		System.out.println();
 		System.out.println(System.currentTimeMillis() - start + " ms");
