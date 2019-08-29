@@ -1,7 +1,6 @@
 package com.heightmap.services;
 
 import com.heightmap.Height;
-import com.heightmap.storages.Storage;
 
 public class First {
 	

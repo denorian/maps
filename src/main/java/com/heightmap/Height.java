@@ -3,9 +3,10 @@ package com.heightmap;
 import com.heightmap.services.First;
 import com.heightmap.storages.Storage;
 
+import java.util.HashMap;
+
 public class Height {
 	public static final int ERROR_VALUE = -1000;
-	public static final double STEP = 0.0005;
 	private static Storage storage;
 	
 	static {
@@ -20,8 +21,12 @@ public class Height {
 			if (height > Height.ERROR_VALUE)
 				storage.putHeight(latitude, longitude, height);
 		}
-		
+		//System.out.println(height);
 		return height;
 	}
 	
+	HashMap<String, Coordinate> getMap(double latitudeStart, double latitudeEnd, double longitudeStart, double longitudeEnd, int precision) {
+		
+		return storage.find(latitudeStart, latitudeEnd, longitudeStart, longitudeEnd, precision);
+	}
 }
