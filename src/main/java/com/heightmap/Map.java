@@ -15,8 +15,8 @@ public class Map {
 	public Map(Coordinate coordinateStart, Coordinate coordinateEnd) {
 		this.coordinateStart = coordinateStart;
 		this.coordinateEnd = coordinateEnd;
-		this.precision = 3;
-		this.step = 0.001;
+		this.precision = 4;
+		this.step = 0.0005;
 		
 	}
 	
@@ -44,7 +44,8 @@ public class Map {
 		}
 		
 		HashMap<String, Coordinate> coordinateMap = height.getMap(latitudeStart, latitudeEnd, longitudeStart, longitudeEnd, precision);
-		
+		System.out.println(coordinateLinkedList.size());
+		System.out.println(coordinateMap.size());
 		Iterator iterator = coordinateLinkedList.iterator();
 		while (iterator.hasNext()) {
 			Coordinate coordinate = (Coordinate) iterator.next();

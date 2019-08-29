@@ -11,7 +11,7 @@ public class Main {
 		Coordinate coordinateStart = new Coordinate(44.391614, 38.519921);
 		Coordinate coordinateEnd = new Coordinate(44.355355, 38.540778);
 		
-		Map map = new Map(coordinateStart, coordinateEnd, 4);
+		Map map = new Map(coordinateStart, coordinateEnd, 3);
 		LinkedList<Coordinate> mapList = map.createMatrix();
 		
 		Iterator iterator = mapList.iterator();

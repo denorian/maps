@@ -21,7 +21,7 @@ public class Height {
 			if (height > Height.ERROR_VALUE)
 				storage.putHeight(latitude, longitude, height);
 		}
-		//System.out.println(height);
+		System.out.println(height);
 		return height;
 	}
 	
