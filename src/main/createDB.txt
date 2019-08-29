@@ -1,2 +1,6 @@
+// создание БД
 use Maps;
+// создение коллекции
 db.createCollection("heights");
+// удаление всех документов из коллекции
+db.heights.remove({})
