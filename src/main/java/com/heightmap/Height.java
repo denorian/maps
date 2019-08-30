@@ -21,7 +21,15 @@ public class Height {
 			if (height > Height.ERROR_VALUE)
 				storage.putHeight(latitude, longitude, height);
 		}
-		System.out.println(height);
+		return height;
+	}
+	
+	public int getAndPutIntoDB(double latitude, double longitude) {
+		int height = First.getHeight(latitude, longitude);
+		
+		if (height > Height.ERROR_VALUE)
+			storage.putHeight(latitude, longitude, height);
+		
 		return height;
 	}
 	

@@ -1,10 +1,10 @@
 package com.heightmap;
 
+import com.heightmap.worker.CoordinateWorkerThread;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Map {
 	private double step;
@@ -29,6 +29,7 @@ public class Map {
 	
 	public LinkedList<Coordinate> createMatrix() {
 		
+		List<Thread> threadList = new ArrayList<>();
 		LinkedList<Coordinate> coordinateLinkedList = new LinkedList();
 		Height height = new Height();
 		
@@ -53,8 +54,25 @@ public class Map {
 			if (coordinateMap.containsKey(mapKey)) {
 				coordinate.setHeight(coordinateMap.get(mapKey).getHeight());
 			} else {
-				coordinate.setHeight(height.get(coordinate.getLatitude(), coordinate.getLongitude()));
+				try {
+					Thread thread = new CoordinateWorkerThread(coordinate,height);
+					thread.setPriority(Thread.MAX_PRIORITY);
+					thread.start();
+					Thread.sleep(100);
+					threadList.add(thread);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
 			}
+		}
+		
+		try {
+			for (Thread thread : threadList) {
+				thread.join();
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 		
 		return coordinateLinkedList;
@@ -80,7 +98,6 @@ public class Map {
 			}
 		}
 	}
-	
 	
 	private double customRound(double num) {
 		return new BigDecimal(num).setScale(precision, RoundingMode.HALF_UP).doubleValue();
